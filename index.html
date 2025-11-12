@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📖 Flashcards – Nossa Família Celestial</title>
+  <style>
+    :root{
+      --simple:#4285F4; --compound:#EA4335; --complex:#34A853; --coordinating:#FBBC05; --practice:#7B1FA2;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:#f5f7fa; margin:0; padding:24px; color:#2d3748;
+      max-width:1100px; margin-left:auto; margin-right:auto;
+    }
+    h1{ text-align:center; margin:0 0 8px; font-size:1.6rem; border-bottom:2px solid #e2e8f0; padding-bottom:12px;}
+    .subtitle{ text-align:center; color:#4a5568; margin:8px 0 20px;}
+    .categories{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:18px;}
+    .category-btn{ padding:8px 16px; border-radius:20px; border: none; cursor:pointer; font-weight:600; transition:all .18s; }
+    .category-btn:hover{ transform:translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,0.08); }
+    .simple-btn{ background:var(--simple); color:#fff }
+    .compound-btn{ background:var(--compound); color:#fff }
+    .complex-btn{ background:var(--complex); color:#fff }
+    .coordinating-btn{ background:var(--coordinating); color:#000 }
+    .practice-btn{ background:var(--practice); color:#fff }
+    .flashcards-container{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px;
+    }
+    .flashcard{
+      background:#fff; border-radius:12px; padding:18px; box-shadow:0 6px 12px rgba(17,24,39,0.06);
+      border-left:6px solid #ddd; cursor:pointer; overflow:hidden; transition:transform .18s,box-shadow .18s;
+    }
+    .flashcard:hover{ transform:translateY(-6px); box-shadow:0 14px 30px rgba(17,24,39,0.08); }
+    .simple{ border-color:var(--simple); }
+    .compound{ border-color:var(--compound); }
+    .complex{ border-color:var(--complex); }
+    .coordinating{ border-color:var(--coordinating); }
+    .practice{ border-color:var(--practice); }
+    .flashcard-header{ font-weight:700; display:flex; align-items:center; gap:10px; font-size:1.05rem; margin-bottom:10px; }
+    .emoji{ font-size:1.4rem; }
+    .content{ display:none; }
+    .content.active{ display:block; animation:fadeIn .28s ease; }
+    @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+    .question{ background:#f8fafc; padding:10px; border-radius:8px; margin-bottom:10px; font-weight:600; color:#334155; }
+    .answer{ background:#ebf8ff; padding:10px; border-radius:8px; margin:8px 0; border-left:4px solid #4299e1; color:#1f2937; }
+    .explanation{ background:#f0fff4; padding:10px; border-radius:8px; margin:8px 0; border-left:4px solid #48bb78; color:#1f2937; }
+    .examples{ background:#fff5f5; padding:10px; border-radius:8px; margin:8px 0; border-left:4px solid #f56565; color:#1f2937; }
+    .practice-block{ background:#f3e5f5; padding:10px; border-radius:8px; margin:8px 0; border-left:4px solid var(--practice); }
+    .practice-item{ margin-bottom:10px; }
+    .practice-question{ font-weight:700; color:#5b21b6; margin-bottom:8px; }
+    .practice-answer{ display:none; background:#edf7ff; padding:8px; border-radius:6px; margin-top:8px; }
+    .practice-answer.active{ display:block; }
+    .show-answer{ background:var(--practice); color:#fff; border:none; padding:7px 10px; border-radius:6px; cursor:pointer; }
+    footer{ text-align:center; margin-top:26px; color:#555; font-size:0.9rem; border-top:1px solid #e6eef6; padding-top:12px; }
+  </style>
+</head>
+<body>
+
+<h1>📖 Flashcards – Nossa Família Celestial</h1>
+<div class="subtitle">Somos filhos e filhas de nosso Pai Celestial — clique nos cartões para abrir.</div>
+
+<div class="categories">
+  <button class="category-btn simple-btn" onclick="filterCards('simple')">Somos Filhos</button>
+  <button class="category-btn compound-btn" onclick="filterCards('compound')">Talentos no Céu</button>
+  <button class="category-btn complex-btn" onclick="filterCards('complex')">Plano do Pai</button>
+  <button class="category-btn coordinating-btn" onclick="filterCards('coordinating')">Escrituras Adicionais</button>
+  <button class="category-btn practice-btn" onclick="filterCards('practice')">Perguntas / Prática</button>
+  <button class="category-btn" onclick="filterCards('all')" style="background:#2d3748;color:#fff">Mostrar Todos</button>
+</div>
+
+<div class="flashcards-container">
+
+  <!-- Somos Filhos -->
+  <div class="flashcard simple">
+    <div class="flashcard-header"><span class="emoji">🔵</span> Somos Filhos do Pai Celestial</div>
+    <div class="content">
+      <div class="question">O que as escrituras e profetas ensinam sobre nossa relação com Deus?</div>
+      <div class="answer">Deus é nosso Pai Celestial — não apenas Criador e Governante, mas literalmente nosso Pai. Todos somos filhos espirituais Dele; viemos de pais celestiais e temos potencial divino.</div>
+      <div class="explanation">Fomos gerados e vivemos com nossos pais celestiais antes de nascer na Terra. Essa origem explica nossa dignidade e potencial eterno.</div>
+      <div class="examples"><strong>Aplicação:</strong> Ponderar: como essa verdade muda meu valor próprio e minhas ações?</div>
+    </div>
+  </div>
+
+  <!-- Talentos -->
+  <div class="flashcard compound">
+    <div class="flashcard-header"><span class="emoji">🔴</span> Desenvolvemos Talentos no Céu</div>
+    <div class="content">
+      <div class="question">O que aprendemos sobre talentos e personalidades antes da vida mortal?</div>
+      <div class="answer">Nos preparamos no céu: possuíamos diferentes talentos e fomos chamados a missões específicas. Alguns foram preordenados para liderança.</div>
+      <div class="explanation">Embora um véu cubra nossa memória, Deus conhece quem somos. Ele nos colocou no tempo e local certos para desenvolver nossos dons.</div>
+      <div class="examples"><strong>Exemplo:</strong> A bênção patriarcal pode revelar nossos dons e missão pessoal.</div>
+    </div>
+  </div>
+
+  <!-- Plano do Pai -->
+  <div class="flashcard complex">
+    <div class="flashcard-header"><span class="emoji">🟢</span> O Plano do Pai</div>
+    <div class="content">
+      <div class="question">Por que fomos enviados à Terra e qual o propósito do plano?</div>
+      <div class="answer">O Pai nos enviou à Terra para sermos provados, receber corpos e aprender pela fé. Se seguirmos a Cristo, seremos exaltados e teremos alegria eterna.</div>
+      <div class="explanation">No Conselho Celestial aprendemos que as provações servem para desenvolver paciência, fé e caridade.</div>
+      <div class="examples"><strong>Aplicação:</strong> As dificuldades podem purificar-nos e aproximar-nos do Pai Celestial.</div>
+    </div>
+  </div>
+
+  <!-- Escrituras Adicionais -->
+  <div class="flashcard coordinating">
+    <div class="flashcard-header"><span class="emoji">🟡</span> Escrituras Adicionais</div>
+    <div class="content">
+      <div class="question">Leituras que esclarecem nossa origem e o plano do Pai</div>
+      <div class="explanation">
+        <p><strong>Hebreus 12:9</strong> — Deus é o Pai de nossos espíritos; Ele nos corrige e guia.</p>
+        <p><strong>Jó 38:4–7</strong> — Menciona os “filhos de Deus” louvando a criação, sugerindo vida premortal.</p>
+        <p><strong>Abraão 3:22–28</strong> — Mostra os espíritos escolhidos antes da Terra e o plano divino.</p>
+        <p><strong>Jeremias 1:5</strong> — “Antes de te formar no ventre eu te conheci” — evidencia pré-existência.</p>
+        <p><strong>D&C 29:31–38</strong> — Revela princípios da criação espiritual e vida premortal.</p>
+        <p><strong>Moisés 3:4–7</strong> — Descreve a criação espiritual e física do homem.</p>
+        <p><strong>1 Coríntios 15:44</strong> — Ensina que há corpo natural e corpo espiritual, mostrando progressão.</p>
+        <p><strong>D&C 76:23–24</strong> — Somos filhos espirituais de Deus, criados por Ele e por Seu Filho.</p>
+        <p><strong>D&C 132:11–26</strong> — Revela o plano de exaltação e o papel eterno das famílias.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perguntas / Prática -->
+  <div class="flashcard practice">
+    <div class="flashcard-header"><span class="emoji">🟪</span> Perguntas para reflexão / prática</div>
+    <div class="content">
+      <div class="question">Use estas perguntas em estudo familiar</div>
+      <div class="practice-block">
+        <div class="practice-item">
+          <div class="practice-question">1. Como o fato de sermos filhos de Deus muda sua maneira de viver?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: "Lembra-me que tenho valor eterno e devo agir com dignidade."</div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-question">2. Que talentos você acredita ter recebido e como pode usá-los?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: "Usar meus dons para servir e fortalecer outros."</div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-question">3. De que maneira você pode aplicar o plano do Pai hoje?</div>
+          <button class="show-answer">Mostrar sugestão</button>
+          <div class="practice-answer">Sugestão: "Tomar decisões com fé e seguir o exemplo de Cristo."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Material criado para estudo — Edson D'Aguiar • © @InglêsFácilGratuito</footer>
+
+<script>
+  // Faz cada flashcard abrir e fechar ao clique
+  document.querySelectorAll('.flashcard').forEach(card=>{
+    card.addEventListener('click', e=>{
+      if(e.target.classList.contains('show-answer')) return;
+      const content = card.querySelector('.content');
+      content.classList.toggle('active');
+    });
+  });
+
+  // Botões "Mostrar sugestão"
+  document.querySelectorAll('.show-answer').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const ans = btn.nextElementSibling;
+      ans.classList.toggle('active');
+    });
+  });
+
+  // Filtro de categorias
+  function filterCards(category){
+    document.querySelectorAll('.flashcard').forEach(card=>{
+      card.style.display = (category==='all'||card.classList.contains(category)) ? '' : 'none';
+    });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
